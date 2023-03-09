@@ -16,6 +16,13 @@ function App() {
       })
   }, []);
 
+  const onTodoAdd = () => {
+    const lastId = Number((todos[todos.length - 1]._id).replace('todo_',''));
+    const text = prompt('Task name:');
+    const newTask = { _id: lastId + 1, text, isCompleted: false };
+    setTodos(state => [newTask, ...state])
+  }
+
   const toggleTodoStatus = (id) => {
     setTodos(state => state.map(t => t._id === id ? ({ ...t, isCompleted: !t.isCompleted }) : t));
   };
@@ -32,7 +39,7 @@ function App() {
         <section className="todo-list-container">
           <h1>Todo List</h1>
           <div className="add-btn-container">
-            <button className="btn">+ Add new Todo</button>
+            <button className="btn" onClick={onTodoAdd}>+ Add new Todo</button>
           </div>
           <div className="table-wrapper">
             {/* Loading spinner - show the load spinner when fetching the data from the server*/}

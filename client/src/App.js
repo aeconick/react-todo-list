@@ -16,6 +16,10 @@ function App() {
       })
   }, []);
 
+  const toggleTodoStatus = (id) => {
+    setTodos(state => state.map(t => t._id === id ? ({ ...t, isCompleted: !t.isCompleted }) : t));
+  };
+
   return (
     <div>
       {/* Navigation header */}
@@ -36,7 +40,7 @@ function App() {
             {/* <Loading /> */}
 
             {/* Todo list table */}
-            <TodoList todos={todos} />
+            <TodoList todos={todos} toggleTodoStatus={toggleTodoStatus} />
           </div>
         </section>
       </main>

@@ -1,5 +1,6 @@
 export default function TodoList({
     todos,
+    toggleTodoStatus
 }) {
     return (
         <table className="table">
@@ -17,7 +18,7 @@ export default function TodoList({
                     <td>{todo.text}</td>
                     <td>{todo.isCompleted ? 'Complete' : 'Not Complete'}</td>
                     <td className="todo-action">
-                        <button className="btn todo-btn">Change status</button>
+                        <button className="btn todo-btn" onClick={()=>toggleTodoStatus(todo._id)}>Change status</button>
                     </td>
                 </tr>
                 ))}

@@ -1,4 +1,6 @@
-export default function Todos() {
+export default function TodoList({
+    todos,
+}) {
     return (
         <table className="table">
             <thead>
@@ -9,14 +11,17 @@ export default function Todos() {
                 </tr>
             </thead>
             <tbody>
-                {/* Todo item */}
-                <tr className="todo is-completed">
-                    <td>Give dog a bath</td>
-                    <td>Complete</td>
+
+                {todos.map(todo =>(
+                    <tr className={`todo${todo.isCompleted ? ' is-completed' : ''}`}>
+                    <td>{todo.text}</td>
+                    <td>{todo.isCompleted ? 'Complete' : 'Not Complete'}</td>
                     <td className="todo-action">
                         <button className="btn todo-btn">Change status</button>
                     </td>
                 </tr>
+                ))}
+                
             </tbody>
         </table>
     );

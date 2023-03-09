@@ -19,7 +19,7 @@ function App() {
   const onTodoAdd = () => {
     const lastId = Number((todos[todos.length - 1]._id).replace('todo_',''));
     const text = prompt('Task name:');
-    const newTask = { _id: lastId + 1, text, isCompleted: false };
+    const newTask = { _id: 'todo_' + (lastId + 1), text, isCompleted: false };
     setTodos(state => [newTask, ...state])
   }
 
